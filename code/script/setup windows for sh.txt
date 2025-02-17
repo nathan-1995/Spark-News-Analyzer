@@ -70,4 +70,5 @@ source ~/miniconda3/etc/profile.d/conda.sh
 conda activate news_processing
 cd /mnt/c/Users/..../code #Example: cd /mnt/c/Users/ndeli/Desktop/Work/uzabase/code
 python src/run.py process_data_all --cfg config/config.yaml --dataset news --dirout "ztmp/data/" 
+or
 python src/run.py process_data --cfg config/config.yaml --dataset news --dirout "ztmp/data/" 

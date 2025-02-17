@@ -1,11 +1,8 @@
-#Need to use WSL to run this script. 
-
 # Stop on error
-
 set -e
 
 # Conda setup
-CONDA_BASE="$HOME/miniconda3"
+CONDA_BASE="/opt/conda"
 ENV_NAME="news_processing"
 
 # Check Conda installation
@@ -25,18 +22,19 @@ echo "Conda environment '$ENV_NAME' activated."
 PYTHON_EXEC=$(command -v python) || { echo "Error: Python not found in Conda environment."; exit 1; }
 echo "Using Python executable: $PYTHON_EXEC"
 
-# Set paths and variables dynamically
-BASE_DIR=$(dirname "$(dirname "$(realpath "$0")")")  # Parent of script/ dir
+# Set path for Docker environment
+BASE_DIR="/app"  
 SCRIPT_DIR="$BASE_DIR/src"
 CONFIG_FILE="$BASE_DIR/config/config.yaml"
-OUTPUT_DIR="$BASE_DIR/../ztmp/data/"
+OUTPUT_DIR="$BASE_DIR/ztmp/data/"
 DATASET="news"
 
-# Display paths
-# echo "Base directory: $BASE_DIR"
-# echo "Script directory: $SCRIPT_DIR"
-# echo "Config file: $CONFIG_FILE"
-# echo "Output directory: $OUTPUT_DIR"
+# Set PySpark Python paths 
+export PYSPARK_PYTHON="$CONDA_BASE/envs/$ENV_NAME/bin/python"
+export PYSPARK_DRIVER_PYTHON="$CONDA_BASE/envs/$ENV_NAME/bin/python"
+
+# Create output directory if it doesn't exist
+mkdir -p "$OUTPUT_DIR"
 
 # Call and run the Python script with the required arguments
 for process in "process_data" "process_data_all"; do

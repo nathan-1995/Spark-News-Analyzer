@@ -1,3 +1,9 @@
+"""
+run.py processes the AG News dataset and counts the occurrences of specific words or all words in the dataset. 
+The script reads the dataset, cleans the text, and extracts words from the description column. 
+It then counts the occurrences of specific words or all words and saves the results to a specified output format.
+"""
+
 import os
 import logging
 import yaml
@@ -108,6 +114,9 @@ def main() -> None:
         raise
     finally:
         spark.stop()
+        logging.info("Spark session stopped")
+        print("Spark session stopped")
+
 
 
 def process_data(spark: SparkSession, dataset: Dataset, output_dir: str, specific_words: List[str], output_format: str) -> None:
