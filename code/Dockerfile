@@ -37,4 +37,5 @@ COPY code /app
 RUN chmod +x /app/script/run.sh
 
 # Use Bash shell and run the script
-CMD ["/bin/bash", "/app/script/run.sh"]
+CMD ["/bin/bash", "-c", "/app/script/run.sh; tail -f /dev/null"]
+
