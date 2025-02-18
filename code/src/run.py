@@ -152,18 +152,20 @@ def process_text(spark: SparkSession, dataset: Dataset) -> DataFrame:
 
 def save_word_counts(df_words: DataFrame, output_dir: str, filename_prefix: str, output_format: str) -> None:
     """Count occurrences of words and save results to specified format"""
-    word_count_df: DataFrame = df_words.groupBy("word").agg(count("*").alias("word_count")) # Count occurrences of each word
+    # Count occurrences of each word
+    word_count_df: DataFrame = df_words.groupBy("word").agg(count("*").alias("word_count")) \
+        .orderBy(col("word_count").desc())  # Sort in descending order
 
     logging.info(f"Word count results for {filename_prefix} before saving:")
-    word_count_df.show()
+    word_count_df.show(n=5, truncate=False)  
 
     # Generate output path
     date_str: str = datetime.datetime.now().strftime("%Y%m%d")
     output_path: str = os.path.join(output_dir, f"{filename_prefix}_{date_str}.{output_format}")
 
-    word_count_df.write.mode("overwrite").parquet(output_path) # Save results
+    word_count_df.write.mode("overwrite").parquet(output_path)  # Save results
     logging.info(f"Results saved to {output_path}")
-
 
 if __name__ == "__main__":
     main()
+    
