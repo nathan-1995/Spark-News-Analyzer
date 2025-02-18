@@ -43,5 +43,4 @@ RUN chmod +x /app/code/script/run.sh
 RUN chmod 777 /app/logs /app/ztmp/data
 
 # Use Bash shell and run the script
-CMD ["/bin/bash", "-c", "/app/script/run.sh; tail -f /dev/null"]
-
+CMD ["/bin/bash", "-c", "/app/code/script/run.sh; tail -f /dev/null"]
