@@ -24,4 +24,4 @@ jobs:
           context: .
           file: code/Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/Spark-News:latest
+          tags: ${{ secrets.DOCKER_USERNAME }}/spark-news:latest
