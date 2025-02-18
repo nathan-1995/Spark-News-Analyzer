@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "code/**" # Only triggers when files in 'code/' change
+      - "code/**" # Only triggers when files inside 'code/' change
   workflow_dispatch:
 
 jobs:
@@ -16,12 +16,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: 🔄 Copy Workflow from Code Folder
+      - name: Run Workflow in Code Folder
         run: |
-          mkdir -p .github/workflows/
-          cp code/github_build_action.yml .github/workflows/temp_code_workflow.yml
-
-      - name: Manually Trigger the Copied Workflow
-        uses: benc-uk/workflow-dispatch@v1
-        with:
-          workflow: temp_code_workflow.yml
+          chmod +x code/github_build_action.yml  # Ensure it's executable
+          bash code/github_build_action.yml
