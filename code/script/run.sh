@@ -29,12 +29,13 @@ PARENT_DIR="$(dirname "$CODE_DIR")"
 # Set path for Docker environment
 SRC_DIR="$CODE_DIR/src"
 CONFIG_FILE="$CODE_DIR/config/config.yaml"
-OUTPUT_DIR="file://$PARENT_DIR/ztmp/data"
 DATASET="news"
+LOCAL_OUTPUT_DIR="$PARENT_DIR/ztmp/data"
+OUTPUT_DIR="file://$LOCAL_OUTPUT_DIR"
 LOGS_DIR="$PARENT_DIR/logs"
 
-# Create output directories if they don't exist
-mkdir -p "$OUTPUT_DIR"
+# Create output/logs directories if they don't exist
+mkdir -p "$LOCAL_OUTPUT_DIR"
 mkdir -p "$LOGS_DIR"
 
 # Set PySpark Python paths 
