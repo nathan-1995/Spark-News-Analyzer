@@ -24,15 +24,15 @@ echo "Using Python executable: $PYTHON_EXEC"
 
 # Get the base directory
 CODE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-PARENT_DIR="$(dirname "$CODE_DIR")"
+APP_DIR="$(dirname "$CODE_DIR")"
 
 # Set path for Docker environment
 SRC_DIR="$CODE_DIR/src"
 CONFIG_FILE="$CODE_DIR/config/config.yaml"
 DATASET="news"
-LOCAL_OUTPUT_DIR="$PARENT_DIR/ztmp/data"
+LOCAL_OUTPUT_DIR="$APP_DIR/ztmp/data"
 OUTPUT_DIR="file://$LOCAL_OUTPUT_DIR"
-LOGS_DIR="$PARENT_DIR/logs"
+LOGS_DIR="$APP_DIR/logs"
 
 # Create output/logs directories if they don't exist
 mkdir -p "$LOCAL_OUTPUT_DIR"

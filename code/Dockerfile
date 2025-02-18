@@ -30,11 +30,17 @@ RUN conda env create -f /tmp/environment.yml && conda clean -afy
 # Set working directory
 WORKDIR /app
 
+# Create necessary directories
+RUN mkdir -p /app/logs /app/ztmp/data
+
 # Copy project files into /app
-COPY code /app
+COPY code /app/code
 
 # Ensure script is executable
-RUN chmod +x /app/script/run.sh
+RUN chmod +x /app/code/script/run.sh
+
+# Set permissions for directories
+RUN chmod 777 /app/logs /app/ztmp/data
 
 # Use Bash shell and run the script
 CMD ["/bin/bash", "-c", "/app/script/run.sh; tail -f /dev/null"]
