@@ -1,0 +1,19 @@
+name: Trigger Code Folder Workflow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "code/**" # Triggers only when files inside 'code/' change
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Run Workflow in Code Folder
+        run: bash code/github_build_action.yml
