@@ -29,7 +29,7 @@ PARENT_DIR="$(dirname "$CODE_DIR")"
 # Set path for Docker environment
 SRC_DIR="$CODE_DIR/src"
 CONFIG_FILE="$CODE_DIR/config/config.yaml"
-OUTPUT_DIR="$PARENT_DIR/ztmp/data"
+OUTPUT_DIR="file://$PARENT_DIR/ztmp/data"
 DATASET="news"
 LOGS_DIR="$PARENT_DIR/logs"
 
