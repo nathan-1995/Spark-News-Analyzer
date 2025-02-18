@@ -5,13 +5,13 @@ specific_words: # Words to filter by
   - "the"
   - "Asia"
 
-log_file: "logs/data_processed.txt" # Path to the log file
+log_file: "logs/logfile.txt" # Path to the log file
 
 dataset_split: "test" # Test or train dataset
 
 output_format: "parquet" # Output format for the processed data
 
 spark_settings: # Spark settings
-  cores: 4
-  driver_memory: "4g"
-  executor_memory: "4g"
+  cores: 2
+  driver_memory: "2g"
+  executor_memory: "2g"
