@@ -118,7 +118,6 @@ def main() -> None:
         print("Spark session stopped")
 
 
-
 def process_data(spark: SparkSession, dataset: Dataset, output_dir: str, specific_words: List[str], output_format: str) -> None:
     """Process the dataset and count occurrences of specific words (case-sensitive)"""
     df_words: DataFrame = process_text(spark, dataset)
@@ -157,7 +156,7 @@ def save_word_counts(df_words: DataFrame, output_dir: str, filename_prefix: str,
         .orderBy(col("word_count").desc())  # Sort in descending order
 
     logging.info(f"Word count results for {filename_prefix} before saving:")
-    word_count_df.show(n=5, truncate=False)  
+    word_count_df.show(n=10, truncate=False)  
 
     # Generate output path
     date_str: str = datetime.datetime.now().strftime("%Y%m%d")
