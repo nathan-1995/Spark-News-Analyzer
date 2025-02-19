@@ -1,3 +1,5 @@
-logs/data_processed.txt
+logs/
 ztmp/data/
 code/ztmp/
+code/src/__pycache__
+code/tests/__pycache__
