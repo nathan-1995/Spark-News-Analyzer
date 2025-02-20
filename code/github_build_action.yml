@@ -1,4 +1,4 @@
-# name: Docker Login Test
+# Github_build_action.yml has to be in github/workflows folder to work
 
 # on:
 #   workflow_call:
